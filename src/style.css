@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::before {
+  box-sizing: border-box;
+}
+*::after {
+  box-sizing: border-box;
+}
+
+#demo {
+  word-break: break-all; /* 让一行很长的内容自动断行 */
+}
+#div1 {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+}
+
+#div1::before {
+  content: ""; /* 之前为1 */
+  display: block;
+  position: absolute;
+}
+
+#div1::after {
+  content: ""; /* 之前为2 */
+  display: block;
+  position: absolute;
+}
+/* 上面的代码表示用css在div1的第一个子元素前面加上1，在div1的最后一个子元素后面加上2。
+相当于在div里放了两个span，加上display: block;就相当于div，它们被称为伪元素。这样就不需要在div里再加div。*/
+
+@media (max-width: 500px) {
+  /* 当屏幕宽度小于500px时（为了适应手机屏幕），执行下面的语句。 */
+  #html {
+    height: 50vh; /* 表示高度为屏幕的一半 */
+    overflow: auto; /* 把div1加上滚动条 */
+  }
+
+  #div1Wrapper {
+    height: 50vh;
+  }
+
+  #div1 {
+    right: 0;
+    top: 0;
+    position: relative;
+  }
+}
